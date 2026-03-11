@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: fullstack-m1-task
+    runtime: docker
+    autoDeploy: true
