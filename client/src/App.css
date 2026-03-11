@@ -73,6 +73,8 @@ button {
   transition: all 0.15s ease;
   position: relative;
   min-width: 96px;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 button:disabled {
@@ -111,6 +113,11 @@ button.danger {
   height: 0;
 }
 
+.rightList {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 .row {
   display: flex;
   justify-content: space-between;
@@ -121,7 +128,15 @@ button.danger {
   border-radius: 6px;
   width: 100%;
   padding: 8px 10px;
-  transition: all 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.sortableRow {
+  transform-origin: center;
+}
+
+.draggingRow {
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.12);
 }
 
 .idLabel {

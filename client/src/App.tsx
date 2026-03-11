@@ -60,10 +60,16 @@ function RightSortableRow(props: {
   const sortable = useSortable({ id: String(id) });
   const style = {
     transform: CSS.Transform.toString(sortable.transform),
-    transition: sortable.transition,
+    transition: sortable.isDragging ? "none" : sortable.transition,
+    zIndex: sortable.isDragging ? 10 : 1,
   };
   return (
-    <div className="row" data-id={id} ref={sortable.setNodeRef} style={style}>
+    <div
+      className={sortable.isDragging ? "row sortableRow draggingRow" : "row sortableRow"}
+      data-id={id}
+      ref={sortable.setNodeRef}
+      style={style}
+    >
       <button
         className="dragHandle"
         type="button"
@@ -317,7 +323,7 @@ function App() {
             />
           </div>
         </header>
-        <div className="list" onScroll={(event) => onListScroll("right", event.currentTarget)}>
+        <div className="list rightList" onScroll={(event) => onListScroll("right", event.currentTarget)}>
           <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}
